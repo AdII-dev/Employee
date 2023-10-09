@@ -22,7 +22,7 @@ namespace Employee
             Console.WriteLine($"Az átlag életkor: {KorAtlag(dolgozo)}");
             Console.WriteLine($"Budapesten élők száma: {VarosBP(dolgozo)}");
             Console.WriteLine($"A legidősebb személy: {dolgozo[Legidosebb(dolgozo)].ToString()}");
-
+            Console.WriteLine($"Harminc év fölötti személy: {HarmincPlus(dolgozo)}");
 
             Console.ReadKey();
         }
@@ -65,11 +65,22 @@ namespace Employee
 
             return index;
         }
-        static int HarmincPlus(List<Dolgozok> d)
+        static string HarmincPlus(List<Dolgozok> d)
         {
+            int index = 0;
+            string neve = string.Empty;
             int Rn = 0;
+            for (int i = 0; i < d.Count; i++)
+            {
+                if (d[i].age >= 30)
+                {
+                    Rn += 1;
+                    neve = d[i].name;
+                    index = i;
+                }
+            }
 
-            return Rn;
+            return $"{Rn} {neve}";
         }
 
     }
