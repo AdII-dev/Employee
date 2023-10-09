@@ -13,26 +13,30 @@ namespace Employee
         public int age { get; set; }
         public string city { get; set; }
         public string position { get; set; }
+        public string department { get; set; }
         public string gender { get; set; }
         public string martialStatus { get; set; }
         public double salaryEUR { get; set; }
     
         public Dolgozok(string sor)
         {
-            string[] atmeneti = sor.Split(';');
+            var atmeneti = sor.Split(';');
             name = atmeneti[0];
             age = Convert.ToInt32(atmeneti[1]);
             city = atmeneti[2];
-            position = atmeneti[3];
-            gender = atmeneti[4];
-            martialStatus = atmeneti[5];
-            salaryEUR = Convert.ToInt32(atmeneti[6]);
+            department = atmeneti[3];
+            position = atmeneti[4];
+            gender = atmeneti[5];
+            martialStatus = atmeneti[6];
+            salaryEUR = Convert.ToDouble(atmeneti[7]);
 
         }
-        public void Kiir()
+        public override string ToString()//virtuális metódus
         {
-            Console.WriteLine($"Név: {name}, Kor: {age}, Város: {city}, Pozíció: {position}, Nem: {gender}, Kapcsolata: {martialStatus}, Fizetés: {salaryEUR} ");
+            return $"Név: {name}, Kor: {age}, Város: {city}, Pozíció: {position}, Nem: {gender}, Kapcsolata: {martialStatus}, Fizetés: {salaryEUR} ";
         }
+        
+
         
     }
 }
